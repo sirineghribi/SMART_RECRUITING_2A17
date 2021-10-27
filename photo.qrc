@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../Downloads/BG QT.jpg</file>
+        <file>../../Downloads/LOGIIN QT.jpg</file>
+        <file>../../Desktop/login.PNG</file>
+    </qresource>
+</RCC>
