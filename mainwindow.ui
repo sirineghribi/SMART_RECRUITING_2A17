@@ -24,7 +24,60 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">
+QPushButton
+ {
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #AAA, stop: 0.1 #CCC, stop: 0.49 #68A, stop: 0.5 #67B, stop: 1 #6999ff);
+border-width: 1px;
+border-color: #6999ff;
+border-style: solid;
+border-radius: 7;
+padding: 3px;
+font-size: 20px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 110px;
+max-width: 110px;
+min-height: 20px;
+max-height: 20px;
+}
+QTabBar::tab {background-color: transparent;color: #1c04a3;width: 180px;height:35px;font-size:22px} 
+QTabBar::tab:hover{background-color:#AAA; color: white;}     
+QTabBar::tab:selected{background-color: #3200; color: #3390;
+border-width: 1px;
+border-color: #6999ff;
+border-style: solid;
+border-radius: 7;}
+
+QLineEdit
+{
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #AAA, stop: 0.1 #68A, stop: 1 #6999ff);
+    padding: 1px;
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 5;
+}
+QRadioButton::indicator:checked, QRadioButton::indicator:unchecked{
+    color: #6998ff;
+    background-color: #AAA;
+    border: 1px solid #b1b1b1;
+    border-radius: 6px;
+}
+
+QRadioButton::indicator:checked
+{
+    background-color: qradialgradient(
+        cx: 0.5, cy: 0.5,
+        fx: 0.5, fy: 0.5,
+        radius: 1.0,
+        stop: 0.25 #ffaa00,
+        stop: 0.3 #323232
+    );
+}
+QscrollArea
+{background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #AAA, stop: 0.1 #CCC, stop: 0.49 #68A, stop: 0.5 #67B, stop: 1 #6999ff);
+}</string>
     </property>
     <property name="title">
      <string>Gestion employé</string>
@@ -79,7 +132,7 @@
           <string>Nom:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="lineEditprenom">
          <property name="geometry">
           <rect>
            <x>120</x>
@@ -89,7 +142,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="lineEditnom">
          <property name="geometry">
           <rect>
            <x>120</x>
@@ -125,42 +178,6 @@
           <string>Sexe:</string>
          </property>
         </widget>
-        <widget class="QDateEdit" name="dateEdit">
-         <property name="geometry">
-          <rect>
-           <x>170</x>
-           <y>140</y>
-           <width>110</width>
-           <height>25</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QRadioButton" name="radioButton">
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>100</y>
-           <width>120</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Male</string>
-         </property>
-        </widget>
-        <widget class="QRadioButton" name="radioButton_2">
-         <property name="geometry">
-          <rect>
-           <x>210</x>
-           <y>100</y>
-           <width>120</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Female</string>
-         </property>
-        </widget>
         <widget class="QLabel" name="label_5">
          <property name="geometry">
           <rect>
@@ -187,7 +204,7 @@
           <string>Date de naissance:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_3">
+        <widget class="QLineEdit" name="lineEditcin">
          <property name="geometry">
           <rect>
            <x>120</x>
@@ -210,7 +227,7 @@
           <string>Mail:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_4">
+        <widget class="QLineEdit" name="lineEditmail">
          <property name="geometry">
           <rect>
            <x>120</x>
@@ -233,7 +250,7 @@
           <string>Adresse:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_5">
+        <widget class="QLineEdit" name="lineEditid">
          <property name="geometry">
           <rect>
            <x>120</x>
@@ -256,7 +273,7 @@
           <string>Identifiant:</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_6">
+        <widget class="QLineEdit" name="lineEditadresse">
          <property name="geometry">
           <rect>
            <x>120</x>
@@ -266,26 +283,26 @@
           </rect>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="pb_ajouter">
          <property name="geometry">
           <rect>
            <x>20</x>
            <y>390</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
           <string>Ajouter</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="pb_modifier">
          <property name="geometry">
           <rect>
            <x>160</x>
            <y>390</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
@@ -297,12 +314,55 @@
           <rect>
            <x>300</x>
            <y>390</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
           <string>Quitter</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEditsexe">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>100</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="l_date">
+         <property name="geometry">
+          <rect>
+           <x>160</x>
+           <y>140</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_18">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>350</y>
+           <width>141</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Num de téléphone:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdittel">
+         <property name="geometry">
+          <rect>
+           <x>160</x>
+           <y>350</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
          </property>
         </widget>
        </widget>
@@ -380,7 +440,7 @@
           <string>Affichage:</string>
          </property>
         </widget>
-        <widget class="QTableView" name="tableView">
+        <widget class="QTableView" name="tab_employe">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -390,13 +450,13 @@
           </rect>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pb_supp">
          <property name="geometry">
           <rect>
            <x>450</x>
            <y>320</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
@@ -421,8 +481,8 @@
           <rect>
            <x>20</x>
            <y>410</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
@@ -434,8 +494,8 @@
           <rect>
            <x>150</x>
            <y>410</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
@@ -447,8 +507,8 @@
           <rect>
            <x>320</x>
            <y>320</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
@@ -467,8 +527,8 @@
         <rect>
          <x>470</x>
          <y>300</y>
-         <width>112</width>
-         <height>34</height>
+         <width>122</width>
+         <height>28</height>
         </rect>
        </property>
        <property name="text">
@@ -480,8 +540,8 @@
         <rect>
          <x>610</x>
          <y>300</y>
-         <width>112</width>
-         <height>34</height>
+         <width>122</width>
+         <height>28</height>
         </rect>
        </property>
        <property name="text">
@@ -683,8 +743,8 @@
           <rect>
            <x>670</x>
            <y>280</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
@@ -696,8 +756,8 @@
           <rect>
            <x>540</x>
            <y>280</y>
-           <width>112</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
@@ -737,8 +797,8 @@
           <rect>
            <x>80</x>
            <y>70</y>
-           <width>351</width>
-           <height>34</height>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">

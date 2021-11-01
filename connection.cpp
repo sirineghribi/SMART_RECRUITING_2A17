@@ -1,23 +1,28 @@
-#include "connection.h"
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+#include "employe.h"
+#include <QMainWindow>
 
-Connection::Connection()
+namespace Ui {
+class MainWindow;
+}
+
+class MainWindow : public QMainWindow
 {
+    Q_OBJECT
 
-}
+public:
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
 
-bool Connection::createconnect()
-{bool test=false;
-QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-db.setDatabaseName("test2");
-db.setUserName("system");//inserer nom de l'utilisateur
-db.setPassword("0000");//inserer mot de passe de cet utilisateur
+private slots:
+    void on_pb_ajouter_clicked();
 
-if (db.open())
-test=true;
+    void on_pb_supp_clicked();
 
+private:
+    Ui::MainWindow *ui;
+    Employe Etmp;
+};
 
-
-
-
-    return  test;
-}
+#endif // MAINWINDOW_H

@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "employe.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -15,8 +15,14 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_pb_ajouter_clicked();
+
+    void on_pb_supp_clicked();
+
 private:
     Ui::MainWindow *ui;
+    Employe Etmp;
 };
 
 #endif // MAINWINDOW_H
