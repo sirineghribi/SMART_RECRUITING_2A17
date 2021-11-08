@@ -44,7 +44,7 @@ max-height: 20px;
 }
 QTabBar::tab {background-color: transparent;color: #1c04a3;width: 180px;height:35px;font-size:22px} 
 QTabBar::tab:hover{background-color:#AAA; color: white;}     
-QTabBar::tab:selected{background-color: #3200; color: #3390;
+QTabBar::tab:selected{background-color: #AAA; color: #3390;
 border-width: 1px;
 border-color: #6999ff;
 border-style: solid;
@@ -101,8 +101,8 @@ QscrollArea
       <widget class="QScrollArea" name="scrollArea">
        <property name="geometry">
         <rect>
-         <x>9</x>
-         <y>6</y>
+         <x>10</x>
+         <y>10</y>
          <width>541</width>
          <height>491</height>
         </rect>
@@ -135,7 +135,7 @@ QscrollArea
         <widget class="QLineEdit" name="lineEditprenom">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>180</x>
            <y>60</y>
            <width>113</width>
            <height>25</height>
@@ -145,7 +145,7 @@ QscrollArea
         <widget class="QLineEdit" name="lineEditnom">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>180</x>
            <y>20</y>
            <width>113</width>
            <height>25</height>
@@ -201,13 +201,13 @@ QscrollArea
           </rect>
          </property>
          <property name="text">
-          <string>Date de naissance:</string>
+          <string>Date_de_naissance:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="lineEditcin">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>180</x>
            <y>180</y>
            <width>113</width>
            <height>25</height>
@@ -230,7 +230,7 @@ QscrollArea
         <widget class="QLineEdit" name="lineEditmail">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>180</x>
            <y>220</y>
            <width>113</width>
            <height>25</height>
@@ -253,7 +253,7 @@ QscrollArea
         <widget class="QLineEdit" name="lineEditid">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>180</x>
            <y>260</y>
            <width>113</width>
            <height>25</height>
@@ -270,13 +270,13 @@ QscrollArea
           </rect>
          </property>
          <property name="text">
-          <string>Identifiant:</string>
+          <string>Id:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="lineEditadresse">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>180</x>
            <y>300</y>
            <width>113</width>
            <height>25</height>
@@ -325,7 +325,7 @@ QscrollArea
         <widget class="QLineEdit" name="lineEditsexe">
          <property name="geometry">
           <rect>
-           <x>120</x>
+           <x>180</x>
            <y>100</y>
            <width>113</width>
            <height>25</height>
@@ -335,7 +335,7 @@ QscrollArea
         <widget class="QLineEdit" name="l_date">
          <property name="geometry">
           <rect>
-           <x>160</x>
+           <x>180</x>
            <y>140</y>
            <width>113</width>
            <height>25</height>
@@ -345,21 +345,21 @@ QscrollArea
         <widget class="QLabel" name="label_18">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>350</y>
+           <x>20</x>
+           <y>340</y>
            <width>141</width>
            <height>20</height>
           </rect>
          </property>
          <property name="text">
-          <string>Num de téléphone:</string>
+          <string>Num_de_telephone:</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="lineEdittel">
          <property name="geometry">
           <rect>
-           <x>160</x>
-           <y>350</y>
+           <x>180</x>
+           <y>340</y>
            <width>113</width>
            <height>25</height>
           </rect>
@@ -370,9 +370,9 @@ QscrollArea
       <widget class="QScrollArea" name="scrollArea_2">
        <property name="geometry">
         <rect>
-         <x>590</x>
+         <x>560</x>
          <y>10</y>
-         <width>591</width>
+         <width>611</width>
          <height>491</height>
         </rect>
        </property>
@@ -384,7 +384,7 @@ QscrollArea
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>589</width>
+          <width>609</width>
           <height>489</height>
          </rect>
         </property>
@@ -440,12 +440,12 @@ QscrollArea
           <string>Affichage:</string>
          </property>
         </widget>
-        <widget class="QTableView" name="tab_employe">
+        <widget class="QTableView" name="TAB_EMPLOYE">
          <property name="geometry">
           <rect>
            <x>10</x>
            <y>110</y>
-           <width>551</width>
+           <width>591</width>
            <height>192</height>
           </rect>
          </property>
@@ -486,20 +486,7 @@ QscrollArea
           </rect>
          </property>
          <property name="text">
-          <string>Créer PDF</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>410</y>
-           <width>122</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Afficher PDF</string>
+          <string>Exporter PDF</string>
          </property>
         </widget>
         <widget class="QPushButton" name="pushButton_7">
@@ -589,47 +576,24 @@ QscrollArea
           </rect>
          </property>
          <property name="text">
-          <string>Identifiant de client:</string>
-         </property>
-        </widget>
-        <widget class="QTextEdit" name="textEdit">
-         <property name="geometry">
-          <rect>
-           <x>270</x>
-           <y>80</y>
-           <width>481</width>
-           <height>91</height>
-          </rect>
+          <string>Identifiant :</string>
          </property>
         </widget>
         <widget class="QDateTimeEdit" name="dateTimeEdit">
          <property name="geometry">
           <rect>
-           <x>270</x>
-           <y>190</y>
+           <x>250</x>
+           <y>100</y>
            <width>194</width>
            <height>25</height>
           </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_13">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>80</y>
-           <width>131</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Reclamation:</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_14">
          <property name="geometry">
           <rect>
            <x>30</x>
-           <y>190</y>
+           <y>100</y>
            <width>171</width>
            <height>20</height>
           </rect>
@@ -706,7 +670,7 @@ QscrollArea
          <property name="geometry">
           <rect>
            <x>30</x>
-           <y>70</y>
+           <y>80</y>
            <width>281</width>
            <height>20</height>
           </rect>
@@ -795,14 +759,14 @@ QscrollArea
         <widget class="QPushButton" name="pushButton_12">
          <property name="geometry">
           <rect>
-           <x>80</x>
-           <y>70</y>
+           <x>190</x>
+           <y>80</y>
            <width>122</width>
            <height>28</height>
           </rect>
          </property>
          <property name="text">
-          <string>Le bilan des satistiques</string>
+          <string>Bilan</string>
          </property>
         </widget>
        </widget>

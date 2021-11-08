@@ -32,6 +32,7 @@ void MainWindow::on_pb_ajouter_clicked()
   int  id=ui->lineEditid->text().toInt();
   QString sexe=ui->lineEditsexe->text();
   int num_de_tel=ui->lineEdittel->text().toInt();
+  
  Employe E (nom,prenom,sexe,date_de_naissance,mail,adresse,id,cin,num_de_tel);
 
 bool test=E.ajouter();

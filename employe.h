@@ -30,9 +30,10 @@ public:
     void setmail(QString);
     void setadresse(QString);
 
-    bool ajouter_employe();
+    bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);
+    bool modifier(int,int,int,QString,QString,QString,QString,QString,QString);
 
 private:
     QString nom,prenom,sexe,date_de_naissance,mail,adresse;
