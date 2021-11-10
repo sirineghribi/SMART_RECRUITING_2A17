@@ -26,16 +26,19 @@ CONFIG += c++11
 
 SOURCES += \
     employe.cpp \
+    login.cpp \
         main.cpp \
         mainwindow.cpp \
     connection.cpp
 
 HEADERS += \
     employe.h \
+    login.h \
         mainwindow.h \
     connection.h
 
 FORMS += \
+        log.ui \
         mainwindow.ui
 
 # Default rules for deployment.

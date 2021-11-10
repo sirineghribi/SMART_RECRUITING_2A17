@@ -33,7 +33,7 @@ public:
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);
-    bool modifier(int,int,int,QString,QString,QString,QString,QString,QString);
+    bool modifier();
 
 private:
     QString nom,prenom,sexe,date_de_naissance,mail,adresse;
