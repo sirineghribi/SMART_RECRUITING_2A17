@@ -7,27 +7,26 @@ class Rdv
 public:
     Rdv();
 
-    Rdv(int, int , int , QString ,QString);
+    Rdv(int, QString , QString , QString);
 
-    int get_date();
-    int get_heure();
+    QString get_date();
+    QString get_heure();
     int get_id();
     QString get_region();
-    QString get_domaine();
 
-    void set_date(int);
-    void set_heure(int);
+    void set_date(QString);
+    void set_heure(QString);
     void set_id(int);
     void set_region(QString);
-    void set_domaine(QString);
 
     bool ajouter();
     QSqlQueryModel* afficher();
     bool supprimer(int);
+    bool modifier();
 
 private:
-    int date, heure,id;
-    QString region,domaine;
+    int id_rdv;
+    QString date_rdv, heure_rdv, region;
 
 };
 

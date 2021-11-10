@@ -2,53 +2,49 @@
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+
 Rdv::Rdv()
 {
-    id=0; date=0; heure=0;     region= "";  domaine= "";
+    id_rdv=0; date_rdv=""; heure_rdv=""; region= "";
 }
 
 
-Rdv::Rdv(int id, int date, int heure, QString region,QString domaine)
+Rdv::Rdv(int id, QString date, QString heure, QString region)
 {
-    this->id=id; this->date=date; this->heure=heure; this->region=region; this->domaine=domaine;
+    this->id_rdv=id; this->date_rdv=date; this->heure_rdv=heure; this->region=region;
 }
 
 
-int Rdv::get_date(){return date;}
+QString Rdv::get_date(){return date_rdv;}
 
-int Rdv::get_heure(){return heure;}
+QString Rdv::get_heure(){return heure_rdv;}
 
-int Rdv::get_id(){return id;}
+int Rdv::get_id(){return id_rdv;}
 
 QString Rdv::get_region(){return region;}
 
-QString Rdv::get_domaine(){return domaine;}
+void Rdv::set_date(QString date_rdv){this->date_rdv=date_rdv;}
 
-void Rdv::set_date(int date){this->date=date;}
+void Rdv::set_heure(QString heure_rdv){this->heure_rdv=heure_rdv;}
 
-void Rdv::set_heure(int heure){this->heure=heure;}
-
-void Rdv::set_id(int id){this->id=id;}
+void Rdv::set_id(int id_rdv){this->id_rdv=id_rdv;}
 
 void Rdv::set_region(QString region){this->region=region;}
-
-void Rdv::set_domaine(QString domaine){this->domaine=domaine;}
 
 bool Rdv::ajouter()
 {
 
     QSqlQuery query;
-    QString id_string= QString::number(id);
-    QString date_string= QString::number(date);
-    QString heure_string= QString::number(heure);
+    QString id_string= QString::number(id_rdv);
 
-          query.prepare("INSERT INTO rdv (id, date, heure, region, domaine) "
-                        "VALUES (:id, :date, :heure, :region, :domaine)");
-          query.bindValue(":id", id_string);
-          query.bindValue(":date", date_string);
-          query.bindValue(":heure", heure_string);
-          query.bindValue(":region", region);
-          query.bindValue(":domaine", domaine);
+          query.prepare("INSERT INTO GS_RDV (ID_RDV, DATE_RDV, HEURE_RDV, REGION) "
+                        "VALUES (:ID_RDV, :DATE_RDV, :HEURE_RDV, :REGION)");
+          query.bindValue(":ID_RDV", id_string);
+          query.bindValue(":DATE_RDV", date_rdv);
+          query.bindValue(":HEURE_RDV", heure_rdv);     // les info ecrit dans les le_edit ne seront pas envoyée directement
+                                                         // la requete au niveau de la base donnée on aura une liaison avant
+                                                        // de faire l'execution grace au binding (bindvalue)
+          query.bindValue(":REGION", region);
 
           return query.exec();
 }
@@ -58,25 +54,40 @@ QSqlQueryModel* Rdv::afficher()
 {
     QSqlQueryModel* model=new QSqlQueryModel();
 
-          model->setQuery("SELECT* FROM Rdv");
-          model->setHeaderData(0, Qt::Horizontal, QObject::tr("Identifiant"));
-          model->setHeaderData(1, Qt::Horizontal, QObject::tr("Date"));
-          model->setHeaderData(2, Qt::Horizontal, QObject::tr("Heure"));
-          model->setHeaderData(3, Qt::Horizontal, QObject::tr("Region"));
-          model->setHeaderData(4, Qt::Horizontal, QObject::tr("Domaine"));
+          model->setQuery("SELECT* FROM GS_RDV");
+          model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_RDV"));   //Pour modifier les textes d'en-tête, appelez setHeaderData() sur le modèle.
+          model->setHeaderData(1, Qt::Horizontal, QObject::tr("DATE_RDV"));
+          model->setHeaderData(2, Qt::Horizontal, QObject::tr("HEURE_RDV"));
+          model->setHeaderData(3, Qt::Horizontal, QObject::tr("REGION"));
 
           return model;
 }
 
-bool Rdv::supprimer(int)
+bool Rdv::supprimer(int id)
 {
     QSqlQuery query;
+QString id_string= QString::number(id);
+          query.prepare("Delete from GS_RDV where ID_RDV=:id");
 
-          query.prepare("Delete from rdv where id=:id");
-
-          query.bindValue(":id", id);
+          query.bindValue(":id", id_string);
 
           return query.exec();
+
+}
+
+bool Rdv::modifier()
+{
+
+    QSqlQuery query;
+
+    query.prepare("update  GS_RDV SET DATE_RDV=:DATE_RDV, HEURE_RDV=:HEURE_RDV, REGION=:REGION WHERE ID_RDV=:ID_RDV");
+
+    query.bindValue(":ID_RDV",id_rdv);
+    query.bindValue(":DATE_RDV",date_rdv);
+    query.bindValue(":HEURE_RDV",heure_rdv);
+    query.bindValue(":REGION",region);
+
+    return query.exec();
 
 }
 

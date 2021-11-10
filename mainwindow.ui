@@ -94,9 +94,9 @@ background-color: rgba(0, 0, 0,0);</string>
    </widget>
    <zorder>label_2</zorder>
    <zorder>label</zorder>
-   <zorder>pb_login</zorder>
    <zorder>le_username</zorder>
    <zorder>le_mdp</zorder>
+   <zorder>pb_login</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

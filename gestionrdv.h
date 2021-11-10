@@ -1,6 +1,7 @@
 #ifndef GESTIONRDV_H
 #define GESTIONRDV_H
-
+#include <QMainWindow>
+#include "rdv.h"
 #include <QDialog>
 
 namespace Ui {
@@ -15,8 +16,16 @@ public:
     explicit gestionrdv(QWidget *parent = nullptr);
     ~gestionrdv();
 
+private slots:
+    void on_pb_ajouter_clicked();
+
+    void on_pb_supp_clicked();
+
+    void on_pb_modifier_clicked();
+
 private:
     Ui::gestionrdv *ui;
+    Rdv r;
 };
 
 #endif // GESTIONRDV_H
