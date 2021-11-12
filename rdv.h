@@ -23,6 +23,9 @@ public:
     QSqlQueryModel* afficher();
     bool supprimer(int);
     bool modifier();
+    bool recherche(int);
+
+    void pdf(QString, int, QString);
 
 private:
     int id_rdv;

@@ -2,6 +2,10 @@
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+#include <QMessageBox>
+
+
+#include <QTextDocument>
 
 Rdv::Rdv()
 {
@@ -37,6 +41,7 @@ bool Rdv::ajouter()
     QSqlQuery query;
     QString id_string= QString::number(id_rdv);
 
+
           query.prepare("INSERT INTO GS_RDV (ID_RDV, DATE_RDV, HEURE_RDV, REGION) "
                         "VALUES (:ID_RDV, :DATE_RDV, :HEURE_RDV, :REGION)");
           query.bindValue(":ID_RDV", id_string);
@@ -66,10 +71,12 @@ QSqlQueryModel* Rdv::afficher()
 bool Rdv::supprimer(int id)
 {
     QSqlQuery query;
+
 QString id_string= QString::number(id);
           query.prepare("Delete from GS_RDV where ID_RDV=:id");
-
           query.bindValue(":id", id_string);
+
+
 
           return query.exec();
 
@@ -88,9 +95,91 @@ bool Rdv::modifier()
     query.bindValue(":REGION",region);
 
     return query.exec();
+}
 
+bool Rdv::recherche(int id)
+{
+
+    QString id_string= QString::number(id);
+    QSqlQuery query;
+    query.prepare("select * from GS_RDV where ID_RDV=:id");
+    query.bindValue(":id",id_string);
+    query.exec();
+    if(query.next())
+    {
+        return true;
+    }
+
+    return false;
 }
 
 
 
+void Rdv::pdf(QString filename,int id,QString filepath)
+{
+    /*
+  //  LE_ID_SUPP
+    Rdv r;
+    r.modifier();
+    //qDebug<< p.Get_nom().toString;
+    qDebug()<<QString(this->get_id());
+    QString id_string= QString::number(id);
+    //QString s = QDate::currentDate().toString();
+    qDebug()<<QString(r.get_id());
+    QString html =
+            "<html>"
+    "<head>"
+        "<meta charset='utf-8' />"
+    "</head>"
+"<style>"
+".wrapper{position:relative;}"
+
+".arrow{position:absolute;right:0px;bottom:0px;}"
+"</style>"
+
+    "<div align=right>"
+       +id_string+
+    "</div>"
+    "<div align=left>"
+
+       "id : "+ r.get_id()+"<br>"
+    "</div>"
+    "<h1 align=center>Description du rdv:" + r.get_id()+" </h1>"
+    "<h3 align=justify>"
++r.get_date()+
+    "</h4>"
+    "<div align=right>"
+"heure: "
++QString (r.get_heure())+
+            "<br>"
+"region: "
++QString (r.get_region())+
+"</div>"
+"<div class='wrapper'>"
+"<div class='arrow'>"
+"<img  src='pics/asset9.png' width='100' height='100'/>"
+"</div>"
+"</div>"
+
+
+;
+
+    QTextDocument document;
+    document.setHtml(html);
+
+
+
+
+
+
+    QPrinter printer(QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setPaperSize(QPrinter::A4);
+    printer.setOutputFileName(filepath+"/"+filename);
+    printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+
+    document.print(&printer);
+        */
+
+}
 

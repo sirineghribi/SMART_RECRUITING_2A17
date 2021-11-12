@@ -248,8 +248,8 @@
       <rect>
        <x>70</x>
        <y>40</y>
-       <width>461</width>
-       <height>261</height>
+       <width>231</width>
+       <height>181</height>
       </rect>
      </property>
      <property name="title">
@@ -285,10 +285,10 @@
     <widget class="QGroupBox" name="groupBox_5">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>330</y>
-       <width>461</width>
-       <height>261</height>
+       <x>350</x>
+       <y>50</y>
+       <width>291</width>
+       <height>181</height>
       </rect>
      </property>
      <property name="title">
@@ -307,7 +307,7 @@
        <string>Id</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="le_recherche">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -317,11 +317,11 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="pb_rechercher">
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>120</y>
+        <y>130</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -330,6 +330,16 @@
        <string>Rechercher</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QTableView" name="tab_tri_rech">
+     <property name="geometry">
+      <rect>
+       <x>95</x>
+       <y>271</y>
+       <width>631</width>
+       <height>351</height>
+      </rect>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tab_3">
@@ -400,7 +410,7 @@
     <attribute name="title">
      <string>PDF</string>
     </attribute>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="pb_generer_pdf">
      <property name="geometry">
       <rect>
        <x>390</x>
