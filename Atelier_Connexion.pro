@@ -29,13 +29,15 @@ SOURCES += \
     login.cpp \
         main.cpp \
         mainwindow.cpp \
-    connection.cpp
+    connection.cpp \
+    reclamation.cpp
 
 HEADERS += \
     employe.h \
     login.h \
         mainwindow.h \
-    connection.h
+    connection.h \
+    reclamation.h
 
 FORMS += \
         log.ui \

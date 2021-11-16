@@ -112,3 +112,31 @@ bool Employe:: modifier()
     query.bindValue(":sexe",sexe);
     return    query.exec();
 }
+
+QSqlQueryModel * Employe::rechercher(int id )
+
+{
+    QString id_string= QString::number(id);
+
+    QSqlQueryModel * model=new QSqlQueryModel();
+    QSqlQuery query;
+    query.prepare("select * from employe where ID=:id ");
+    query.addBindValue(id_string);
+    query.exec();
+
+        model->setQuery(query);
+        model->setHeaderData(0,Qt::Horizontal,QObject::tr("cin"));
+        model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+        model->setHeaderData(2,Qt::Horizontal,QObject::tr("prenom"));
+        model->setHeaderData(3,Qt::Horizontal,QObject::tr("sexe"));
+        model->setHeaderData(4,Qt::Horizontal,QObject::tr("mail"));
+        model->setHeaderData(5,Qt::Horizontal,QObject::tr("adresse"));
+        model->setHeaderData(6,Qt::Horizontal,QObject::tr("id"));
+        model->setHeaderData(7,Qt::Horizontal,QObject::tr("date_de_naissance"));
+        model->setHeaderData(8,Qt::Horizontal,QObject::tr("num_de_tel"));
+    return model;
+}
+   QSqlQueryModel * Employe ::trier( )
+   {
+
+   }

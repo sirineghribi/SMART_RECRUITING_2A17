@@ -85,8 +85,8 @@ QscrollArea
     <widget class="QTabWidget" name="tabWidget">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>20</y>
+       <x>10</x>
+       <y>30</y>
        <width>1201</width>
        <height>541</height>
       </rect>
@@ -547,8 +547,8 @@ color: rgb(30, 26, 124);</string>
         <widget class="QLabel" name="label_9">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>10</y>
+           <x>10</x>
+           <y>290</y>
            <width>131</width>
            <height>20</height>
           </rect>
@@ -569,11 +569,11 @@ color: rgb(30, 26, 124);</string>
           <string>Trier employé:</string>
          </property>
         </widget>
-        <widget class="QRadioButton" name="radioButton_3">
+        <widget class="QRadioButton" name="radioButton_id">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>40</y>
+           <x>150</x>
+           <y>290</y>
            <width>151</width>
            <height>24</height>
           </rect>
@@ -591,33 +591,11 @@ color: rgb(30, 26, 124);</string>
           <string>Par identifiant</string>
          </property>
         </widget>
-        <widget class="QRadioButton" name="radioButton_4">
-         <property name="geometry">
-          <rect>
-           <x>310</x>
-           <y>40</y>
-           <width>120</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(102, 133, 199);</string>
-         </property>
-         <property name="text">
-          <string>Par nom</string>
-         </property>
-        </widget>
         <widget class="QLabel" name="label_10">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>80</y>
+           <x>10</x>
+           <y>20</y>
            <width>111</width>
            <height>20</height>
           </rect>
@@ -642,7 +620,7 @@ color: rgb(30, 26, 124);</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>110</y>
+           <y>50</y>
            <width>591</width>
            <height>192</height>
           </rect>
@@ -652,7 +630,7 @@ color: rgb(30, 26, 124);</string>
          <property name="geometry">
           <rect>
            <x>330</x>
-           <y>310</y>
+           <y>250</y>
            <width>122</width>
            <height>28</height>
           </rect>
@@ -661,11 +639,11 @@ color: rgb(30, 26, 124);</string>
           <string>Supprimer</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="pb_rechercher">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>400</y>
+           <y>320</y>
            <width>122</width>
            <height>28</height>
           </rect>
@@ -678,7 +656,20 @@ color: rgb(30, 26, 124);</string>
          <property name="geometry">
           <rect>
            <x>470</x>
-           <y>310</y>
+           <y>250</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="l_rechercher">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>320</y>
            <width>113</width>
            <height>25</height>
           </rect>
@@ -691,32 +682,6 @@ color: rgb(30, 26, 124);</string>
       <attribute name="title">
        <string>reclamation</string>
       </attribute>
-      <widget class="QPushButton" name="pushButton_8">
-       <property name="geometry">
-        <rect>
-         <x>470</x>
-         <y>300</y>
-         <width>122</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Traiter</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_9">
-       <property name="geometry">
-        <rect>
-         <x>610</x>
-         <y>300</y>
-         <width>122</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Quitter</string>
-       </property>
-      </widget>
       <widget class="QScrollArea" name="scrollArea_3">
        <property name="geometry">
         <rect>
@@ -738,11 +703,11 @@ color: rgb(30, 26, 124);</string>
           <height>449</height>
          </rect>
         </property>
-        <widget class="QLineEdit" name="lineEdit_7">
+        <widget class="QLineEdit" name="l_id_rec">
          <property name="geometry">
           <rect>
-           <x>270</x>
-           <y>40</y>
+           <x>190</x>
+           <y>30</y>
            <width>113</width>
            <height>25</height>
           </rect>
@@ -751,8 +716,8 @@ color: rgb(30, 26, 124);</string>
         <widget class="QLabel" name="label_12">
          <property name="geometry">
           <rect>
-           <x>30</x>
-           <y>40</y>
+           <x>20</x>
+           <y>30</y>
            <width>161</width>
            <height>20</height>
           </rect>
@@ -761,34 +726,152 @@ color: rgb(30, 26, 124);</string>
           <string>Identifiant :</string>
          </property>
         </widget>
-        <widget class="QDateTimeEdit" name="dateTimeEdit">
-         <property name="geometry">
-          <rect>
-           <x>250</x>
-           <y>100</y>
-           <width>194</width>
-           <height>25</height>
-          </rect>
-         </property>
-        </widget>
         <widget class="QLabel" name="label_14">
          <property name="geometry">
           <rect>
-           <x>30</x>
-           <y>100</y>
+           <x>20</x>
+           <y>80</y>
            <width>171</width>
            <height>20</height>
           </rect>
          </property>
          <property name="text">
-          <string>Date de reclamation:</string>
+          <string>Date_r:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="ldater">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>80</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_chercher_rec">
+         <property name="geometry">
+          <rect>
+           <x>370</x>
+           <y>90</y>
+           <width>122</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>chercher</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_afficher">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>90</y>
+           <width>122</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>afficher</string>
+         </property>
+        </widget>
+        <widget class="QTableWidget" name="taable_recl">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>230</y>
+           <width>721</width>
+           <height>192</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_13">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>200</y>
+           <width>69</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Affichage:</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_ajout_rec">
+         <property name="geometry">
+          <rect>
+           <x>370</x>
+           <y>50</y>
+           <width>122</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ajouter</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_modi_rec">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>50</y>
+           <width>122</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>modifier</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="l_sujet">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>120</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_19">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>120</y>
+           <width>69</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Sujet:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="l_etat">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>160</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_20">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>160</y>
+           <width>69</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Etat:</string>
          </property>
         </widget>
        </widget>
       </widget>
-      <zorder>scrollArea_3</zorder>
-      <zorder>pushButton_8</zorder>
-      <zorder>pushButton_9</zorder>
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
@@ -836,16 +919,6 @@ color: rgb(30, 26, 124);</string>
          </property>
          <property name="text">
           <string>Identifiant de l'employé:</string>
-         </property>
-        </widget>
-        <widget class="QSpinBox" name="spinBox">
-         <property name="geometry">
-          <rect>
-           <x>320</x>
-           <y>80</y>
-           <width>42</width>
-           <height>25</height>
-          </rect>
          </property>
         </widget>
         <widget class="QLabel" name="label_16">
@@ -908,6 +981,16 @@ color: rgb(30, 26, 124);</string>
          </property>
          <property name="text">
           <string>Valider</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>80</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
          </property>
         </widget>
        </widget>

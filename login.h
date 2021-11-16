@@ -1,8 +1,8 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-
 #include <QWidget>
-
+#include "employe.h"
+#include<QSqlQueryModel>
 namespace Ui {
 class Form;
 }
@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::Form *ui;
+
 };
 
 #endif // LOGIN_H

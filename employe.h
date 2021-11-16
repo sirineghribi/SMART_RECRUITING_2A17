@@ -35,6 +35,9 @@ public:
     bool supprimer(int);
     bool modifier();
 
+    QSqlQueryModel * trier();
+    QSqlQueryModel * rechercher(int);
+
 private:
     QString nom,prenom,sexe,date_de_naissance,mail,adresse;
     int cin,num_de_tel,id;
