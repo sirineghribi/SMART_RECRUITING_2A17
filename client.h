@@ -4,17 +4,19 @@
 #include <QDate>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QtPrintSupport/QPrinter>
+#include <QTextDocument>
 
 class Client
 {
   private:
-    QString  nom, prenom ,date_n,sexe,adresse,domaine,mail;
-    int numero,cin;
+    QString  cin,nom, prenom ,date_n,sexe,adresse,domaine,mail;
+    int numero;
     // QDate date(int j,int m, int an);
 public:
     //constructeurs
     Client();
-    Client(int,QString,QString,QString,QString,QString,QString,QString,int);
+    Client(QString,QString,QString,QString,QString,QString,QString,QString,int);
 
 
     //getters
@@ -25,7 +27,7 @@ public:
     QString getPrenom();
     QString getDomaine();
      QString getDate();
-    int getCin();
+    QString getCin();
     int getNumero();
 
     //setters
@@ -37,14 +39,22 @@ public:
     void setSexe(QString s);
     void setDate(QString date);
 
-    void setCin(int c);
+    void setCin(QString c);
     void setNumero(int num);
 
     //fonctionalites
     bool ajouter();
     QSqlQueryModel * afficher();
-    bool supprimer(int);
+    bool supprimer(QString);
     bool modifier();
+    QSqlQueryModel * rechercher(QString );
+    QSqlQueryModel * trier(QString);
+    void PDF();
+    void PrintTable( QPrinter* printer, QSqlQuery&  Query );
+    QSqlQueryModel * liste_reclamation (QString );
+   // bool liste_reclamation();
+   // bool rechercher (QString);
+
 
 
 };

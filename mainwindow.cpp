@@ -3,16 +3,19 @@
 #include "client.h"
 #include <QIntValidator>
 #include <QMessageBox>
+//#include <QString>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
- ui->lineEdit_cin->setValidator( new QIntValidator(0, 99999999, this));
+ //ui->lineEdit_cin->setValidator( new QIntValidator(0, 99999999, this));
  ui->lineEdit_tel->setValidator( new QIntValidator(0, 99999999, this));
 
  ui->tab_client->setModel(C.afficher());
+ //ui->tab_client->setModel(C.rechercher(ui->domaine2->text()));
+
 }
 
 MainWindow::~MainWindow()
@@ -24,11 +27,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_ajouter2_clicked()
 {
-    int cin=ui->lineEdit_cin->text().toInt();
+    QString cin=ui->lineEdit_cin->text();
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
     QString date_n=ui->lineEdit_date->text();
-    QString sexe=ui->lineEdit_sexe->text();
+    QString sexe=ui->lineEdit_sexe->currentText();
     QString adresse=ui->lineEdit_adresse->text();
      QString domaine=ui->lineEdit_domaine->text();
      QString mail=ui->lineEdit_mail->text();
@@ -56,7 +59,7 @@ void MainWindow::on_ajouter2_clicked()
 
 void MainWindow::on_supprimer_clicked()
 {
-  C.setCin(ui->lineEdit_cin->text().toInt());
+  C.setCin(ui->lineEdit_cin->text());
    bool test=C.supprimer(C.getCin());
 
    if(test)
@@ -77,11 +80,11 @@ void MainWindow::on_supprimer_clicked()
 void MainWindow::on_modifier_clicked()
 {
 
-    int cin=ui->lineEdit_cin->text().toInt();
+    QString  cin=ui->lineEdit_cin->text();
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
     QString date_n=ui->lineEdit_date->text();
-    QString sexe=ui->lineEdit_sexe->text();
+    QString sexe=ui->lineEdit_sexe->currentText();
     QString adresse=ui->lineEdit_adresse->text();
      QString domaine=ui->lineEdit_domaine->text();
      QString mail=ui->lineEdit_mail->text();
@@ -96,7 +99,7 @@ void MainWindow::on_modifier_clicked()
      {
           ui->tab_client->setModel(C.afficher());
          QMessageBox::information(nullptr, QObject::tr("ok"),
-                     QObject::tr("pouvez modifier\n"
+                     QObject::tr("modifier effectue\n"
                                  "Click Cancel to exit."), QMessageBox::Cancel);
 
    }
@@ -105,5 +108,32 @@ void MainWindow::on_modifier_clicked()
                      QObject::tr("impossible de modifier  \n"
                                  "Click Cancel to exit."), QMessageBox::Cancel);
         }
+
+}
+
+void MainWindow::on_rechercher_2_clicked()
+{
+   //QString domaine=ui->domaine2->text();
+  ui->tab_client->setModel(C.rechercher(ui->cin2->text()));
+
+
+}
+
+void MainWindow::on_trier_2_clicked()
+{
+   //QString domaine=ui->domaine2->text();
+  ui->tab_client->setModel(C.trier(ui->ordre->currentText()));
+
+
+}
+
+void MainWindow::on_PDF_clicked()
+{
+  C.PDF();
+}
+
+void MainWindow::on_ok_clicked()
+{
+   ui->tableView1->setModel(C.liste_reclamation(ui->cin3->text()));
 
 }

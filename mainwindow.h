@@ -23,6 +23,14 @@ private slots:
     void on_ajouter2_clicked();
     void on_supprimer_clicked();
     void on_modifier_clicked();
+    void on_rechercher_2_clicked();
+    void on_trier_2_clicked();
+
+
+
+    void on_PDF_clicked();
+
+    void on_ok_clicked();
 
 private:
     Ui::MainWindow *ui;
