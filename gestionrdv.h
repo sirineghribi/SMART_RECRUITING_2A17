@@ -16,6 +16,8 @@ public:
     explicit gestionrdv(QWidget *parent = nullptr);
     ~gestionrdv();
 
+
+
 private slots:
     void on_pb_ajouter_clicked();
 
@@ -25,15 +27,21 @@ private slots:
 
     void on_pb_rechercher_clicked();
 
-    int on_pb_generer_pdf_clicked();
+    void on_pb_generer_pdf_clicked();
 /*
 public slots:
 
     int on_pb_generer_pdf_clicked(); */
 
+    void on_pb_tri_asc_clicked();
+
+    void on_pb_tri_desc_clicked();
+
+    void on_pb_stat_clicked();
+
 private:
     Ui::gestionrdv *ui;
-    Rdv r;
+    Rdv r,r2;
 
 };
 
