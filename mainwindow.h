@@ -20,9 +20,11 @@ private slots:
 
     void on_supp_button_clicked();
 
-    void on_pushButton_4_clicked();
-
     void on_modify_button_clicked();
+
+    void on_tab_domaine_activated(const QModelIndex &index);
+
+    void on_search_button_clicked();
 
 private:
     Ui::MainWindow *ui;

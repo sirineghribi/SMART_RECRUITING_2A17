@@ -20,7 +20,7 @@ Domaine::Domaine()
    void Domaine::setHours(int hours){this->hours=hours;}
 
 bool Domaine::ajouter()
-{bool test=false;
+{
     QSqlQuery query;
     QString ref_string=QString::number(ref);
     QString hours_string=QString::number(hours);
@@ -56,13 +56,28 @@ bool Domaine::modifier( )
 {
 
     QSqlQuery query;
+     query.prepare("UPDATE GS_DOMAINE set ref=:ref, nom=:nom,hours=:hours where ref= :ref");
 
-query.prepare("UPDATE GS_DOMAINE set ref=:ref, nom=:nom, hours=:hours");
-
-    query.bindValue(0, ref);
-
-    query.bindValue(":nom", nom);
-    query.bindValue(":ref", ref);
-    query.bindValue(":hours", hours);
-    return query.exec();
+     query.bindValue(":ref", ref);
+     query.bindValue(":nom", nom);
+     query.bindValue(":hours", hours);
+        return query.exec();
 }
+QSqlQueryModel* Domaine::rechercher(int ref )
+{
+    QString ref_string= QString::number(ref);
+
+    QSqlQueryModel * model=new QSqlQueryModel();
+    QSqlQuery query;
+    query.prepare("select * from GS_DOMAINE where ref=:ref ");
+    query.addBindValue(ref_string);
+    query.exec();
+
+        model->setQuery(query);
+        model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
+        model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+        model->setHeaderData(2,Qt::Horizontal,QObject::tr("hours"));
+
+    return model;
+}
+

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include<QMessageBox>
+#include <QIntValidator>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,7 +24,7 @@ void MainWindow::on_pb_ajouter_clicked()
 
     int hours=ui->les_heurs->text().toInt();
     Domaine D(nom,ref,hours);
-    D.ajouter();
+
     bool test=D.ajouter();
     QMessageBox msgBox;
     if (test)
@@ -57,5 +58,27 @@ else
 
 void MainWindow::on_modify_button_clicked()
 {
+    QString nom=ui->le_nom->text();
+    int ref=ui->la_ref->text().toInt();
 
+    int hours=ui->les_heurs->text().toInt();
+    Domaine D(nom,ref,hours);
+
+    bool test=D.modifier();
+    QMessageBox msgBox;
+    if (test)
+    {msgBox.setText("modified successfully!");
+        //refresh
+       ui->tab_domaine->setModel(D.afficher());
+    }
+else
+    msgBox.setText("failed to modify.");
+    msgBox.exec();
+
+}
+
+void MainWindow::on_search_button_clicked()
+{
+    int ref=ui->ref_searchinput->text().toInt();
+     ui->search_tab->setModel(D.rechercher(ref));
 }
