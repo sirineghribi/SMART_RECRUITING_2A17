@@ -160,13 +160,13 @@ void Domaine::exporter_PDF()
 QSqlQueryModel *Domaine::list_clients(QString val)
 {
    QSqlQueryModel * model=new QSqlQueryModel();
-   model->setQuery("SELECT  GS_CLIENT.cin,GS_DOMAINE.ref,GS_DOMAINE.nom FROM GS_CLIENT FULL JOIN GS_DOMAINE ON GS_CLIENT.cin=GS_DOMAINE.cin WHERE GS_DOMAINE.nom LIKE '"+val+"'");
+   model->setQuery("SELECT  GS_CLIENT.cin,GS_DOMAINE.ref,GS_DOMAINE.nom FROM GS_DOMAINE FULL JOIN GS_CLIENT ON GS_CLIENT.cin=GS_DOMAINE.cin WHERE GS_DOMAINE.nom LIKE '"+val+"'");
    return model;
 }
 QSqlQueryModel *Domaine::list_partenaires(QString val)
 {
    QSqlQueryModel * model=new QSqlQueryModel();
-   model->setQuery("SELECT  GS_PARTENIARE.id,GS_DOMAINE.ref,GS_DOMAINE.nom FROM GS_PARTENAIRE FULL JOIN GS_DOMAINE ON GS_PARTENAIRE.id=GS_DOMAINE.id WHERE GS_DOMAINE.nom LIKE '"+val+"'");
+   model->setQuery("SELECT  GS_PARTENIARE.ID,GS_DOMAINE.ref,GS_DOMAINE.nom FROM GS_DOMAINE FULL JOIN GS_PARTENAIRE ON GS_PARTENAIRE.id=GS_DOMAINE.id WHERE GS_DOMAINE.nom LIKE '"+val+"'");
    return model;
 }
 
