@@ -24,14 +24,14 @@ void PieChartWidget::paintEvent(QPaintEvent *)
        double sum = 0.0, startAng = 0.0;
        double angle, endAng;
        double percent;
-       int qvValues [2]={10,30};
-       sum=40;
+       int qvValues [2]={2,4};
+       sum=6;
               for (int i = 0; i < 2; i++) {
                  percent = qvValues[i] / sum;
                  angle = percent * 360.0;
                  endAng = startAng + angle;
                if (i==0)
-                 painter.setBrush(Qt::darkCyan);
+                 painter.setBrush(Qt::darkBlue);
                if (i==1)
                  painter.setBrush(Qt::darkGray);
                  painter.drawPie(size, static_cast<int>(startAng * 16),
@@ -59,7 +59,7 @@ void PieChartWidget::paintEvent(QPaintEvent *)
                   QRect rectt = QRect(885, 40, 70, 40);
                   painter.drawText(rectt, Qt::AlignCenter,
                                           "femme");
-                  painter.setBrush(Qt::darkCyan);
+                  painter.setBrush(Qt::darkBlue);
                   painter.drawRect(QRect(835, 40, 40, 40));
                   /* double draw_x =this-> width() / 2 +
                                    cos(PI* (endAng / 180.0 - angle / 360.0)) * this->width() / 4.0;
