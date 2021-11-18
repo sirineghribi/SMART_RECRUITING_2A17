@@ -3,11 +3,12 @@
 #include<QString>
 #include<QSqlQuery>
 #include<QSqlQueryModel>
+#include <QtPrintSupport/QPrinter>
 
 class Domaine
 {
     QString nom;
-    int ref,hours;
+    int ref,nbclient;
 public:
     //constructeurs
     Domaine();
@@ -15,18 +16,22 @@ public:
     //getters
     QString getNom();
    int getRef();
-   int getHours();
+   int getnbclient();
    //setters
    void setNom(QString n);
    void setRef(int ref);
-   void setHours(int hours);
+   void setnbclient(int nbclient);
    //functionality
    bool ajouter();
    QSqlQueryModel* afficher();
    bool supprimer(int);
    bool modifier();
    QSqlQueryModel * rechercher(int);
-
+   QSqlQueryModel* trier();
+   void PrintTable( QPrinter* printer, QSqlQuery&  Query );
+   void exporter_PDF();
+   //QSqlQueryModel *Domaine::list_clients(QString val);
+//QSqlQueryModel *Domaine::list_partenaires(QString val)
 };
 
 

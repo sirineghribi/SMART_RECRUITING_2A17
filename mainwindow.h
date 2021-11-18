@@ -26,6 +26,14 @@ private slots:
 
     void on_search_button_clicked();
 
+    void on_Tri_button_clicked();
+
+    void on_pdf_generate_clicked();
+
+    void on_comboBox_activated(const QString &arg1);
+
+    void on_stats_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     Domaine D;

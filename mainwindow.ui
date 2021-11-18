@@ -472,7 +472,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="movable">
      <bool>true</bool>
@@ -484,7 +484,7 @@
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>70</x>
         <y>20</y>
         <width>421</width>
         <height>181</height>
@@ -524,18 +524,18 @@
         <rect>
          <x>20</x>
          <y>120</y>
-         <width>56</width>
+         <width>91</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>Heures</string>
+        <string>nombre clients</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="le_nom">
        <property name="geometry">
         <rect>
-         <x>90</x>
+         <x>110</x>
          <y>40</y>
          <width>113</width>
          <height>22</height>
@@ -545,7 +545,7 @@
       <widget class="QLineEdit" name="la_ref">
        <property name="geometry">
         <rect>
-         <x>90</x>
+         <x>110</x>
          <y>80</y>
          <width>113</width>
          <height>22</height>
@@ -555,7 +555,7 @@
       <widget class="QLineEdit" name="les_heurs">
        <property name="geometry">
         <rect>
-         <x>90</x>
+         <x>110</x>
          <y>120</y>
          <width>113</width>
          <height>22</height>
@@ -566,7 +566,7 @@
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>70</x>
         <y>200</y>
         <width>421</width>
         <height>121</height>
@@ -595,7 +595,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>recherche</string>
+        <string>Recherche</string>
        </property>
        <property name="icon">
         <iconset>
@@ -607,7 +607,7 @@
       <property name="geometry">
        <rect>
         <x>690</x>
-        <y>40</y>
+        <y>90</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -624,7 +624,7 @@
       <property name="geometry">
        <rect>
         <x>690</x>
-        <y>90</y>
+        <y>140</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -641,7 +641,7 @@
       <property name="geometry">
        <rect>
         <x>690</x>
-        <y>180</y>
+        <y>230</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -658,7 +658,7 @@
       <property name="geometry">
        <rect>
         <x>670</x>
-        <y>130</y>
+        <y>180</y>
         <width>141</width>
         <height>20</height>
        </rect>
@@ -671,7 +671,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>380</y>
+        <y>350</y>
         <width>501</width>
         <height>231</height>
        </rect>
@@ -681,7 +681,7 @@
       <property name="geometry">
        <rect>
         <x>680</x>
-        <y>150</y>
+        <y>200</y>
         <width>113</width>
         <height>22</height>
        </rect>
@@ -691,23 +691,57 @@
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>380</y>
+        <y>430</y>
         <width>361</width>
-        <height>231</height>
+        <height>81</height>
        </rect>
       </property>
      </widget>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>710</x>
-        <y>350</y>
+        <x>690</x>
+        <y>400</y>
         <width>71</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
        <string>Search area.</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Tri_button">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>590</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Trier</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Downloads/690150.png</normaloff>../../Downloads/690150.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pdf_generate">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>590</y>
+        <width>121</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Gnerate PDF file </string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Downloads/690150.png</normaloff>../../Downloads/690150.png</iconset>
       </property>
      </widget>
     </widget>
@@ -766,27 +800,31 @@
      <attribute name="title">
       <string>Statistique</string>
      </attribute>
-     <widget class="QLabel" name="label_13">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>20</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Statistique</string>
-      </property>
-     </widget>
      <widget class="QGraphicsView" name="graphicsView">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>40</y>
+        <x>110</x>
+        <y>50</y>
         <width>691</width>
-        <height>581</height>
+        <height>571</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="stats_button">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>10</y>
+        <width>101</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Generate stats</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Downloads/690150.png</normaloff>../../Downloads/690150.png</iconset>
       </property>
      </widget>
     </widget>
