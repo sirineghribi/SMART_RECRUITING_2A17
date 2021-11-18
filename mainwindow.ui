@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -188,6 +188,9 @@
         <width>161</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="maxLength">
+       <number>9</number>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_mail">
@@ -434,27 +437,11 @@
         <string>Exporter PDF </string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_date">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>130</y>
-         <width>171</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maxLength">
-        <number>10</number>
-       </property>
-       <property name="placeholderText">
-        <string>jj/mm/aa</string>
-       </property>
-      </widget>
       <widget class="QComboBox" name="lineEdit_sexe">
        <property name="geometry">
         <rect>
          <x>260</x>
-         <y>170</y>
+         <y>180</y>
          <width>171</width>
          <height>22</height>
         </rect>
@@ -469,6 +456,16 @@
          <string>homme</string>
         </property>
        </item>
+      </widget>
+      <widget class="QDateEdit" name="lineEdit_date">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>140</y>
+         <width>171</width>
+         <height>22</height>
+        </rect>
+       </property>
       </widget>
      </widget>
      <widget class="QPushButton" name="pushButton_3">
@@ -621,7 +618,7 @@
        <string>Au: </string>
       </property>
      </widget>
-     <widget class="QDateEdit" name="dateEdit_3">
+     <widget class="QDateEdit" name="d1">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -631,7 +628,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QDateEdit" name="dateEdit_4">
+     <widget class="QDateEdit" name="d2">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -641,30 +638,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QListView" name="listView_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>200</y>
-        <width>1181</width>
-        <height>261</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_20">
-      <property name="geometry">
-       <rect>
-        <x>1100</x>
-        <y>480</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Quitter</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_21">
+     <widget class="QPushButton" name="ok2">
       <property name="geometry">
        <rect>
         <x>730</x>
@@ -675,6 +649,16 @@
       </property>
       <property name="text">
        <string>Ok</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>220</y>
+        <width>1091</width>
+        <height>311</height>
+       </rect>
       </property>
      </widget>
     </widget>

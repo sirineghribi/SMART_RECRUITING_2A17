@@ -137,3 +137,8 @@ void MainWindow::on_ok_clicked()
    ui->tableView1->setModel(C.liste_reclamation(ui->cin3->text()));
 
 }
+
+void MainWindow::on_ok2_clicked()
+{
+    ui->tableView2->setModel(C.liste_clients(ui->d1->text(),ui->d2->text()));
+}

@@ -53,6 +53,7 @@ void Client::setNumero(int num){this->numero=num;}
      QSqlQuery query;
      //QString cin_string = QString::number(cin);
      QString numero_string= QString::number(numero);
+     QDate Date=QDate::fromString(date_n,"MM/dd/yyyy");
 
            query.prepare("INSERT INTO client (cin,nom,prenom,date_n,sexe,adresse,domaine,mail,numero) "
                          "VALUES (:cin, :nom, :prenom, :date_n, :sexe, :adresse, :domaine, :mail, :numero)");
@@ -60,7 +61,7 @@ void Client::setNumero(int num){this->numero=num;}
            query.bindValue(":cin",cin);
            query.bindValue(":nom",nom);
            query.bindValue(":prenom",prenom);
-           query.bindValue(":date_n",date_n);
+           query.bindValue(":date_n",Date);
            query.bindValue(":sexe",sexe);
            query.bindValue(":adresse", adresse);
            query.bindValue(":domaine",domaine);
@@ -237,3 +238,41 @@ QSqlQueryModel * Client::liste_reclamation(QString val)
     return model;
 
 }
+
+/*QSqlQueryModel * Client::somme_client()
+{
+    QSqlQueryModel* model=new  QSqlQueryModel();
+
+          model->setQuery("");
+          /*model->setHeaderData(0, Qt::Horizontal, QObject::tr("client.cin"));
+          model->setHeaderData(1, Qt::Horizontal, QObject::tr("client.nom"));
+          model->setHeaderData(2, Qt::Horizontal, QObject::tr("reclamation.date_reclamation"));*/
+
+
+
+
+
+    //return model;
+
+//}
+
+QSqlQueryModel * Client::liste_clients(QString d1, QString d2)
+{
+    QSqlQueryModel* model=new  QSqlQueryModel();
+    //QDate date1=QDate::fromString(d1,"MM/dd/yyyy");
+    //QDate date2=QDate::fromString(d2,"MM/dd/yyyy");
+
+
+          model->setQuery("SELECT client.cin ,rdv.dates,client.nom,rdv.heure  FROM client FULL JOIN rdv ON client.cin=rdv.id WHERE dates BETWEEN  '"+d1+"' AND '"+d2+"'");
+          /*model->setHeaderData(0, Qt::Horizontal, QObject::tr("client.cin"));
+          model->setHeaderData(1, Qt::Horizontal, QObject::tr("client.nom"));
+          model->setHeaderData(2, Qt::Horizontal, QObject::tr("reclamation.date_reclamation"));*/
+
+
+
+
+
+    return model;
+
+}
+

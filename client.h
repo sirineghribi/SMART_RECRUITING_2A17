@@ -52,9 +52,10 @@ public:
     void PDF();
     void PrintTable( QPrinter* printer, QSqlQuery&  Query );
     QSqlQueryModel * liste_reclamation (QString );
+    QSqlQueryModel * liste_clients (QString,QString  );
    // bool liste_reclamation();
    // bool rechercher (QString);
-
+     //QSqlQueryModel * somme_client();
 
 
 };

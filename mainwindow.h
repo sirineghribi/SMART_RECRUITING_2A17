@@ -32,6 +32,8 @@ private slots:
 
     void on_ok_clicked();
 
+    void on_ok2_clicked();
+
 private:
     Ui::MainWindow *ui;
     Client C;
