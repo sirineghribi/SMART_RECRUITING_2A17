@@ -3,6 +3,9 @@
 #include <QWidget>
 #include "employe.h"
 #include<QSqlQueryModel>
+#include <QTabWidget>
+#include <QDialog>
+    #include <QApplication>
 namespace Ui {
 class Form;
 }

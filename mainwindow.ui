@@ -92,7 +92,7 @@ QscrollArea
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -410,7 +410,7 @@ color: rgb(30, 26, 124);</string>
           <string>Modifier</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="pb_rein">
          <property name="geometry">
           <rect>
            <x>310</x>
@@ -420,7 +420,7 @@ color: rgb(30, 26, 124);</string>
           </rect>
          </property>
          <property name="text">
-          <string>Quitter</string>
+          <string>reinitialiser</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="lineEditsexe">
@@ -566,29 +566,7 @@ color: rgb(30, 26, 124);</string>
 color: rgb(30, 26, 124);</string>
          </property>
          <property name="text">
-          <string>Trier employé:</string>
-         </property>
-        </widget>
-        <widget class="QRadioButton" name="radioButton_id">
-         <property name="geometry">
-          <rect>
-           <x>150</x>
-           <y>290</y>
-           <width>151</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(102, 133, 199);</string>
-         </property>
-         <property name="text">
-          <string>Par identifiant</string>
+          <string>Trier par id:</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_10">
@@ -643,7 +621,7 @@ color: rgb(30, 26, 124);</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>320</y>
+           <y>420</y>
            <width>122</width>
            <height>28</height>
           </rect>
@@ -669,10 +647,36 @@ color: rgb(30, 26, 124);</string>
          <property name="geometry">
           <rect>
            <x>150</x>
-           <y>320</y>
+           <y>420</y>
            <width>113</width>
            <height>25</height>
           </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_decr">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>290</y>
+           <width>122</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>decroissant</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_croi">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>330</y>
+           <width>122</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>croissant</string>
          </property>
         </widget>
        </widget>
@@ -722,6 +726,18 @@ color: rgb(30, 26, 124);</string>
            <height>20</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(0, 0, 127);
+color: rgb(30, 26, 124);</string>
+         </property>
          <property name="text">
           <string>Identifiant :</string>
          </property>
@@ -734,6 +750,18 @@ color: rgb(30, 26, 124);</string>
            <width>171</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(0, 0, 127);
+color: rgb(30, 26, 124);</string>
          </property>
          <property name="text">
           <string>Date_r:</string>
@@ -762,27 +790,17 @@ color: rgb(30, 26, 124);</string>
           <string>chercher</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pb_afficher">
+        <widget class="QPushButton" name="pb_supprimer_rec">
          <property name="geometry">
           <rect>
-           <x>530</x>
-           <y>90</y>
+           <x>370</x>
+           <y>130</y>
            <width>122</width>
            <height>28</height>
           </rect>
          </property>
          <property name="text">
-          <string>afficher</string>
-         </property>
-        </widget>
-        <widget class="QTableWidget" name="taable_recl">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>230</y>
-           <width>721</width>
-           <height>192</height>
-          </rect>
+          <string>supprimer</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_13">
@@ -790,9 +808,21 @@ color: rgb(30, 26, 124);</string>
           <rect>
            <x>20</x>
            <y>200</y>
-           <width>69</width>
+           <width>101</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(0, 0, 127);
+color: rgb(30, 26, 124);</string>
          </property>
          <property name="text">
           <string>Affichage:</string>
@@ -843,6 +873,18 @@ color: rgb(30, 26, 124);</string>
            <height>20</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(0, 0, 127);
+color: rgb(30, 26, 124);</string>
+         </property>
          <property name="text">
           <string>Sujet:</string>
          </property>
@@ -866,8 +908,53 @@ color: rgb(30, 26, 124);</string>
            <height>20</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(0, 0, 127);
+color: rgb(30, 26, 124);</string>
+         </property>
          <property name="text">
           <string>Etat:</string>
+         </property>
+        </widget>
+        <widget class="QTableView" name="tab_recl">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>250</y>
+           <width>751</width>
+           <height>192</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="l_supp_rec">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>130</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_rein_rec">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>90</y>
+           <width>122</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>reintialiser</string>
          </property>
         </widget>
        </widget>
@@ -880,8 +967,8 @@ color: rgb(30, 26, 124);</string>
       <widget class="QScrollArea" name="scrollArea_4">
        <property name="geometry">
         <rect>
-         <x>129</x>
-         <y>46</y>
+         <x>90</x>
+         <y>30</y>
          <width>861</width>
          <height>441</height>
         </rect>
@@ -898,99 +985,135 @@ color: rgb(30, 26, 124);</string>
           <height>439</height>
          </rect>
         </property>
-        <widget class="QLineEdit" name="lineEdit_8">
+        <widget class="QLabel" name="label_16">
          <property name="geometry">
           <rect>
-           <x>320</x>
+           <x>10</x>
+           <y>30</y>
+           <width>331</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(0, 0, 127);
+color: rgb(30, 26, 124);</string>
+         </property>
+         <property name="text">
+          <string>Nombre des heures supplémentaires:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="l_pa">
+         <property name="geometry">
+          <rect>
+           <x>370</x>
+           <y>70</y>
+           <width>113</width>
+           <height>25</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_affecter">
+         <property name="geometry">
+          <rect>
+           <x>550</x>
+           <y>330</y>
+           <width>122</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ajouter</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="l_nbh">
+         <property name="geometry">
+          <rect>
+           <x>370</x>
            <y>30</y>
            <width>113</width>
            <height>25</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QTableView" name="tab_prime">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>220</y>
+           <width>361</width>
+           <height>192</height>
           </rect>
          </property>
         </widget>
         <widget class="QLabel" name="label_15">
          <property name="geometry">
           <rect>
-           <x>30</x>
-           <y>30</y>
-           <width>221</width>
+           <x>10</x>
+           <y>80</y>
+           <width>69</width>
            <height>20</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(0, 0, 127);
+color: rgb(30, 26, 124);</string>
+         </property>
          <property name="text">
-          <string>Identifiant de l'employé:</string>
+          <string>Prime :</string>
          </property>
         </widget>
-        <widget class="QLabel" name="label_16">
+        <widget class="QPushButton" name="pb_rein_p">
          <property name="geometry">
           <rect>
-           <x>30</x>
-           <y>80</y>
-           <width>281</width>
-           <height>20</height>
+           <x>700</x>
+           <y>330</y>
+           <width>122</width>
+           <height>28</height>
           </rect>
          </property>
          <property name="text">
-          <string>Nombre des heures supplémentaires:</string>
+          <string>reinitialiser</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_17">
          <property name="geometry">
           <rect>
-           <x>30</x>
-           <y>120</y>
-           <width>141</width>
+           <x>10</x>
+           <y>190</y>
+           <width>91</width>
            <height>20</height>
           </rect>
          </property>
-         <property name="text">
-          <string>Prime à attribuer:</string>
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
          </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_9">
-         <property name="geometry">
-          <rect>
-           <x>320</x>
-           <y>120</y>
-           <width>113</width>
-           <height>25</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_11">
-         <property name="geometry">
-          <rect>
-           <x>670</x>
-           <y>280</y>
-           <width>122</width>
-           <height>28</height>
-          </rect>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(0, 0, 127);
+color: rgb(30, 26, 124);</string>
          </property>
          <property name="text">
-          <string>Quitter</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_10">
-         <property name="geometry">
-          <rect>
-           <x>540</x>
-           <y>280</y>
-           <width>122</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Valider</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit">
-         <property name="geometry">
-          <rect>
-           <x>320</x>
-           <y>80</y>
-           <width>113</width>
-           <height>25</height>
-          </rect>
+          <string>Affichage:</string>
          </property>
         </widget>
        </widget>

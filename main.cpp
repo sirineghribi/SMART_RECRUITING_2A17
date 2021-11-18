@@ -3,6 +3,8 @@
 #include <QMessageBox>
 #include "connection.h"
 #include "login.h"
+#include<QWidget>
+#include <QTabWidget>
 
 int main(int argc, char *argv[])
 {

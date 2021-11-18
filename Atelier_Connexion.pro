@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui sql
+QT += printsupport
+QT += widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,6 +32,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
+    prime.cpp \
     reclamation.cpp
 
 HEADERS += \
@@ -37,6 +40,7 @@ HEADERS += \
     login.h \
         mainwindow.h \
     connection.h \
+    prime.h \
     reclamation.h
 
 FORMS += \

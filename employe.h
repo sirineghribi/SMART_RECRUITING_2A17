@@ -3,7 +3,8 @@
 #include<QString>
 #include<QSqlQuery>
 #include<QSqlQueryModel>
-
+#include <QDialog>
+#include <QApplication>
 class Employe
 {
 public:
@@ -35,8 +36,11 @@ public:
     bool supprimer(int);
     bool modifier();
 
-    QSqlQueryModel * trier();
+
+    QSqlQueryModel * trier_croi();
+    QSqlQueryModel * trier_decr();
     QSqlQueryModel * rechercher(int);
+     QSqlQueryModel * pdf();
 
 private:
     QString nom,prenom,sexe,date_de_naissance,mail,adresse;

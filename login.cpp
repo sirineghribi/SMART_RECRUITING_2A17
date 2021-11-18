@@ -3,8 +3,7 @@
 #include "employe.h"
 #include<QMessageBox>
 #include<QSqlQueryModel>
-
-
+#include <QDialog>
 Form::Form(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Form)
@@ -22,7 +21,9 @@ void Form::on_pushButton_clicked()
     QString password = ui->l_password->text();
            QString name = ui->l_name->text();
            if (name=="gerant"&& password=="crud")
-           { //aremplir//
+           {
+
+
 
 
            }

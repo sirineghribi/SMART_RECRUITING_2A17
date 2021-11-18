@@ -21,6 +21,7 @@ public:
     bool ajouter_rec();
     QSqlQueryModel * afficher_rec();
     bool modifier_rec();
+    bool supprimer_rec(int);
     QSqlQueryModel *chercher_reclamation(int id_r);
 
 

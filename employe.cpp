@@ -1,4 +1,4 @@
-#include "employe.h"
+ #include "employe.h"
 #include<QSqlQuery>
 #include <QtDebug>
 
@@ -99,6 +99,12 @@ bool Employe :: supprimer(int id)
 }
 bool Employe:: modifier()
 {
+    QSqlQuery s ;
+    s.exec("SELECT * FROM employe");
+    while(s.next())
+    {
+        if (s.value(0) == id)
+        {
     QSqlQuery query;
     query.prepare("update employe set nom=:nom,prenom=:prenom,mail=:mail,num_de_tel=:num_de_tel,adresse=:adresse,date_de_naissance=:date_de_naissance,cin=:cin,sexe=:sexe where id=:id");
     query.bindValue(":cin", cin);
@@ -110,10 +116,12 @@ bool Employe:: modifier()
     query.bindValue(":date_de_naissance", date_de_naissance);
     query.bindValue(":id", id);
     query.bindValue(":sexe",sexe);
-    return    query.exec();
-}
+    return query.exec();
+        }
+    }
+ }
 
-QSqlQueryModel * Employe::rechercher(int id )
+QSqlQueryModel * Employe::rechercher(int id)
 
 {
     QString id_string= QString::number(id);
@@ -136,7 +144,55 @@ QSqlQueryModel * Employe::rechercher(int id )
         model->setHeaderData(8,Qt::Horizontal,QObject::tr("num_de_tel"));
     return model;
 }
-   QSqlQueryModel * Employe ::trier( )
+   QSqlQueryModel * Employe ::trier_croi(  )
    {
+       QString id_string= QString::number(id);
 
+       QSqlQueryModel * model=new QSqlQueryModel();
+
+       model->setQuery("select * from employe ORDER BY id ASC");
+
+
+           model->setHeaderData(0,Qt::Horizontal,QObject::tr("cin"));
+           model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+           model->setHeaderData(2,Qt::Horizontal,QObject::tr("prenom"));
+           model->setHeaderData(3,Qt::Horizontal,QObject::tr("sexe"));
+           model->setHeaderData(4,Qt::Horizontal,QObject::tr("mail"));
+           model->setHeaderData(5,Qt::Horizontal,QObject::tr("adresse"));
+           model->setHeaderData(6,Qt::Horizontal,QObject::tr("id"));
+           model->setHeaderData(7,Qt::Horizontal,QObject::tr("date_de_naissance"));
+           model->setHeaderData(8,Qt::Horizontal,QObject::tr("num_de_tel"));
+       return model;
    }
+   QSqlQueryModel* Employe::trier_decr()
+   {
+       QSqlQueryModel * model= new QSqlQueryModel();
+
+           model->setQuery("select * from employe ORDER BY id DESC");
+
+           model->setHeaderData(0,Qt::Horizontal,QObject::tr("cin"));
+           model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+           model->setHeaderData(2,Qt::Horizontal,QObject::tr("prenom"));
+           model->setHeaderData(3,Qt::Horizontal,QObject::tr("sexe"));
+           model->setHeaderData(4,Qt::Horizontal,QObject::tr("mail"));
+           model->setHeaderData(5,Qt::Horizontal,QObject::tr("adresse"));
+           model->setHeaderData(6,Qt::Horizontal,QObject::tr("id"));
+           model->setHeaderData(7,Qt::Horizontal,QObject::tr("date_de_naissance"));
+           model->setHeaderData(8,Qt::Horizontal,QObject::tr("num_de_tel"));
+       return model;
+   }
+  QSqlQueryModel *Employe:: pdf()
+  {
+      QSqlQueryModel * model=new QSqlQueryModel();
+      model->setQuery("select * from employe");
+      model->setHeaderData(0,Qt::Horizontal,QObject::tr("cin"));
+      model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+      model->setHeaderData(2,Qt::Horizontal,QObject::tr("prenom"));
+      model->setHeaderData(3,Qt::Horizontal,QObject::tr("sexe"));
+      model->setHeaderData(4,Qt::Horizontal,QObject::tr("mail"));
+      model->setHeaderData(5,Qt::Horizontal,QObject::tr("adresse"));
+      model->setHeaderData(6,Qt::Horizontal,QObject::tr("id"));
+      model->setHeaderData(7,Qt::Horizontal,QObject::tr("date_de_naissance"));
+      model->setHeaderData(8,Qt::Horizontal,QObject::tr("num_de_tel"));
+  return model;
+  }
