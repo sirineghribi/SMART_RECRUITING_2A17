@@ -34,6 +34,8 @@ private slots:
 
     void on_stats_button_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Domaine D;

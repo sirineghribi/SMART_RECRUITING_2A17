@@ -8,7 +8,7 @@
 class Domaine
 {
     QString nom;
-    int ref,nbclient;
+    int ref,hours;
 public:
     //constructeurs
     Domaine();
@@ -16,11 +16,11 @@ public:
     //getters
     QString getNom();
    int getRef();
-   int getnbclient();
+   int gethours();
    //setters
    void setNom(QString n);
    void setRef(int ref);
-   void setnbclient(int nbclient);
+   void sethours(int hours);
    //functionality
    bool ajouter();
    QSqlQueryModel* afficher();
@@ -30,8 +30,9 @@ public:
    QSqlQueryModel* trier();
    void PrintTable( QPrinter* printer, QSqlQuery&  Query );
    void exporter_PDF();
-   //QSqlQueryModel *Domaine::list_clients(QString val);
-//QSqlQueryModel *Domaine::list_partenaires(QString val)
+
+   QSqlQueryModel *list_clients(QString val);
+    QSqlQueryModel *list_partenaires(QString val);
 };
 
 

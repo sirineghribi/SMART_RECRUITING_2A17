@@ -15,30 +15,30 @@ Domaine::Domaine()
 {
    ref=0;
    nom=" ";
-   nbclient=0;
+   hours=0;
 }
-    Domaine::Domaine(QString nom,int ref,int nbclient)
-{ this->nom=nom;this->ref=ref; this->nbclient=nbclient;}
+    Domaine::Domaine(QString nom,int ref,int hours)
+{ this->nom=nom;this->ref=ref; this->hours=hours;}
 
     QString Domaine::getNom(){return nom;}
    int Domaine::getRef(){return ref; }
-   int Domaine::getnbclient(){return nbclient;}
+   int Domaine::gethours(){return hours;}
    void Domaine::setNom(QString n){nom=n;}
    void Domaine::setRef(int ref){this->ref=ref;}
-   void Domaine::setnbclient(int nbclient){this->nbclient=nbclient;}
+   void Domaine::sethours(int hours){this->hours=hours;}
 
 bool Domaine::ajouter()
 {
     QSqlQuery query;
     QString ref_string=QString::number(ref);
-    QString nbclient_string=QString::number(nbclient);
-    query.prepare("INSERT INTO GS_DOMAINE ( ref,nom,nbclient) "
-        "VALUES (:ref, :nom, :nbclient)");
+    QString hours_string=QString::number(hours);
+    query.prepare("INSERT INTO GS_DOMAINE ( ref,nom,hours) "
+        "VALUES (:ref, :nom, :hours)");
 
 
         query.bindValue(":ref", ref_string);
         query.bindValue(":nom", nom);
-        query.bindValue(":nbclient", nbclient_string);
+        query.bindValue(":hours", hours_string);
         return query.exec();
 }
 bool Domaine::supprimer(int ref)
@@ -56,7 +56,7 @@ QSqlQueryModel* model=new QSqlQueryModel();
 
      model->setHeaderData(0, Qt::Horizontal, QObject::tr("reference"));
      model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
-     model->setHeaderData(2, Qt::Horizontal, QObject::tr("nbclient"));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("hours"));
      return model;
 
 }
@@ -64,11 +64,11 @@ bool Domaine::modifier( )
 {
 
     QSqlQuery query;
-     query.prepare("UPDATE GS_DOMAINE set ref=:ref, nom=:nom,nbclient=:nbclient where ref= :ref");
+     query.prepare("UPDATE GS_DOMAINE set ref=:ref, nom=:nom,hours=:hours where ref= :ref");
 
      query.bindValue(":ref", ref);
      query.bindValue(":nom", nom);
-     query.bindValue(":nbclient", nbclient);
+     query.bindValue(":hours", hours);
         return query.exec();
 }
 QSqlQueryModel* Domaine::rechercher(int ref )
@@ -84,7 +84,7 @@ QSqlQueryModel* Domaine::rechercher(int ref )
         model->setQuery(query);
         model->setHeaderData(0,Qt::Horizontal,QObject::tr("reference"));
         model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
-        model->setHeaderData(2,Qt::Horizontal,QObject::tr("nbclient"));
+        model->setHeaderData(2,Qt::Horizontal,QObject::tr("hours"));
 
     return model;
 }
@@ -94,7 +94,7 @@ QSqlQueryModel *Domaine::trier()
     model->setQuery("select * from GS_DOMAINE order by nom ASC") ;
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("ref"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("nbclient"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("hours"));
 
 
 
@@ -157,17 +157,17 @@ void Domaine::exporter_PDF()
      PrintTable(&printer, query);
 
 }
-/*QSqlQueryModel *Domaine::list_clients(QString val)
+QSqlQueryModel *Domaine::list_clients(QString val)
 {
    QSqlQueryModel * model=new QSqlQueryModel();
-   model->setQuery("SELECT  client.cin,domaine.ref,domaine.nom FROM GS_DOMAINE FULL JOIN client ON client.cin=domaine.cin");
+   model->setQuery("SELECT  GS_CLIENT.cin,GS_DOMAINE.ref,GS_DOMAINE.nom FROM GS_CLIENT FULL JOIN GS_DOMAINE ON GS_CLIENT.cin=GS_DOMAINE.cin WHERE GS_DOMAINE.nom LIKE '"+val+"'");
    return model;
-} */
-/*QSqlQueryModel *Domaine::list_partenaires(QString val)
+}
+QSqlQueryModel *Domaine::list_partenaires(QString val)
 {
    QSqlQueryModel * model=new QSqlQueryModel();
-   model->setQuery("SELECT  partenaire.cin,domaine.ref,domaine.nom FROM GS_DOMAINE FULL JOIN parteniare ON partenaire.id=domaine.ref");
+   model->setQuery("SELECT  GS_PARTENIARE.id,GS_DOMAINE.ref,GS_DOMAINE.nom FROM GS_PARTENAIRE FULL JOIN GS_DOMAINE ON GS_PARTENAIRE.id=GS_DOMAINE.id WHERE GS_DOMAINE.nom LIKE '"+val+"'");
    return model;
-} */
+}
 
 

@@ -31,12 +31,14 @@ SOURCES += \
     domaine.cpp \
         main.cpp \
         mainwindow.cpp \
-    connection.cpp
+    connection.cpp \
+    piechartwidget.cpp
 
 HEADERS += \
     domaine.h \
         mainwindow.h \
-    connection.h
+    connection.h \
+    piechartwidget.h
 
 FORMS += \
         mainwindow.ui
