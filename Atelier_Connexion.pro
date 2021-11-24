@@ -31,6 +31,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    arduino.cpp \
     employe.cpp \
     login.cpp \
         main.cpp \
@@ -41,6 +42,7 @@ SOURCES += \
     reclamation.cpp
 
 HEADERS += \
+    arduino.h \
     employe.h \
     login.h \
         mainwindow.h \
