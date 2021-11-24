@@ -4,6 +4,7 @@
 #include<QSqlQuery>
 #include<QSqlQueryModel>
 #include <QDialog>
+#include <QTableView>
 #include <QApplication>
 class Employe
 {
@@ -41,6 +42,8 @@ public:
     QSqlQueryModel * trier_decr();
     QSqlQueryModel * rechercher(int);
      QSqlQueryModel * pdf();
+ void genereExcel(QTableView *);
+
 
 private:
     QString nom,prenom,sexe,date_de_naissance,mail,adresse;

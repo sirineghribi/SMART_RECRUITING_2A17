@@ -1,6 +1,16 @@
  #include "employe.h"
 #include<QSqlQuery>
 #include <QtDebug>
+#include<QTextStream>
+#include<QFile>
+#include<QSqlRecord>
+#include <QMessageBox>
+#include <QDialog>
+#include <QMessageBox>
+#include <QPrinter>
+#include <QPrintDialog>
+#include<QFileDialog>
+#include <QPainter>
 
 Employe::Employe()
 {
@@ -99,12 +109,7 @@ bool Employe :: supprimer(int id)
 }
 bool Employe:: modifier()
 {
-    QSqlQuery s ;
-    s.exec("SELECT * FROM employe");
-    while(s.next())
-    {
-        if (s.value(0) == id)
-        {
+
     QSqlQuery query;
     query.prepare("update employe set nom=:nom,prenom=:prenom,mail=:mail,num_de_tel=:num_de_tel,adresse=:adresse,date_de_naissance=:date_de_naissance,cin=:cin,sexe=:sexe where id=:id");
     query.bindValue(":cin", cin);
@@ -117,8 +122,8 @@ bool Employe:: modifier()
     query.bindValue(":id", id);
     query.bindValue(":sexe",sexe);
     return query.exec();
-        }
-    }
+
+
  }
 
 QSqlQueryModel * Employe::rechercher(int id)
@@ -195,4 +200,44 @@ QSqlQueryModel * Employe::rechercher(int id)
       model->setHeaderData(7,Qt::Horizontal,QObject::tr("date_de_naissance"));
       model->setHeaderData(8,Qt::Horizontal,QObject::tr("num_de_tel"));
   return model;
+  }
+
+
+  void Employe::genereExcel(QTableView *table)
+  {
+
+           QString filters("CSV files (.csv);;All files (.*)");
+           QString defaultFilter("CSV files (*.csv)");
+           QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+                                    filters, &defaultFilter);
+                 QFile file(fileName);
+
+                 QAbstractItemModel *model =  table->model();
+                 if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+                     QTextStream data(&file);
+                     QStringList strList;
+                     for (int i = 0; i < model->columnCount(); i++) {
+                         if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+                             strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+                         else
+                             strList.append("");
+                     }
+                     data << strList.join(";") << "\n";
+                     for (int i = 0; i < model->rowCount(); i++) {
+                         strList.clear();
+                         for (int j = 0; j < model->columnCount(); j++) {
+
+                             if (model->data(model->index(i, j)).toString().length() > 0)
+                                 strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+                             else
+                                 strList.append("");
+                         }
+                         data << strList.join(";") + "\n";
+                     }
+                     file.close();
+                     QMessageBox::information(nullptr, QObject::tr("GENERATION EXCEL"),
+                                               QObject::tr("GENERATION REALISEE AVEC SUCCES\n"
+                                                           "Click OK to exit."), QMessageBox::Ok);
+                 }
+
   }

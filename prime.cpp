@@ -1,5 +1,6 @@
 #include "prime.h"
 
+#include <QDebug>
 prime::prime()
 {
 primes=0;
@@ -47,3 +48,22 @@ void prime:: setnbh_supp(int nbh_supp) {this->nbh_supp=nbh_supp;}
  return model;
  }
 
+QSqlQueryModel *prime::calcul_prime()
+
+ {QSqlQuery query;
+    QSqlQueryModel *model=new QSqlQueryModel();
+    query.prepare(QString("SELECT  SUM(primes) AS somme_prime from prime "));
+    query.exec();
+    model->setQuery(query);
+    return model;
+
+ }
+QSqlQueryModel *prime::calcul_nbh()
+{
+    QSqlQuery query;
+        QSqlQueryModel *model=new QSqlQueryModel();
+        query.prepare(QString("SELECT  SUM(nbh_supp) AS somme_nbh_supp from prime "));
+        query.exec();
+        model->setQuery(query);
+        return model;
+}

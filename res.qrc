@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>fond1.jpg</file>
+        <file>fond2.jpg</file>
+        <file>fond3.jpg</file>
+        <file>fond6.png</file>
+        <file>fond2.1.jpg</file>
+        <file>fond7.1.jfif</file>
+        <file>dd.jpg</file>
+        <file>ff.jpg</file>
+        <file>son_click.mp3</file>
+    </qresource>
+    <qresource prefix="/sounds"/>
+</RCC>

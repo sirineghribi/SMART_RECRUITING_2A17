@@ -19,7 +19,7 @@ Form::~Form()
 void Form::on_pushButton_clicked()
 {
     QString password = ui->l_password->text();
-           QString name = ui->l_name->text();
+    QString name = ui->l_name->text();
            if (name=="gerant"&& password=="crud")
            {
 

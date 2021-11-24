@@ -5,6 +5,7 @@
 #include "prime.h"
 #include <QMainWindow>
 
+#include <QSound>
 namespace Ui {
 class MainWindow;
 }
@@ -34,9 +35,6 @@ private slots:
     void on_pb_croi_clicked();
 
     void on_pb_decr_clicked();
-
-
-
     void on_pb_supprimer_rec_clicked();
 
     void on_tab_recl_clicked(const QModelIndex &index);
@@ -51,11 +49,25 @@ private slots:
 
     void on_pb_rein_p_clicked();
 
+    void on_pb_calcul_clicked();
+
+    void on_pbnbh_supp_clicked();
+
+
+
+
+    void on_pb_excel_clicked();
+
+
+
+    void on_pb_code_clicked();
+
 private:
- Ui::MainWindow *ui;
- Employe Etmp;
+Ui::MainWindow *ui;
+Employe Etmp;
 reclamation R;
 prime p;
+QSound *son;
 };
 
 

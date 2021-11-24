@@ -2,11 +2,28 @@
 #include "ui_mainwindow.h"
 #include "employe.h"
 #include "reclamation.h"
-
+#include "qrcode.h"
 #include <QMessageBox>
 #include <QValidator>
 #include<QWidget>
 #include <QTabWidget>
+
+#include <string>
+#include <vector>
+#include<QDirModel>
+#include <qrcode.h>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <QtSvg/QSvgRenderer>
+using qrcodegen::QrCode;
+
+
+
+
+
+
+
 
 #include <QtPrintSupport/QPrinter>
 
@@ -66,8 +83,12 @@
 
 #include <QValidator>
 
+#include <QtMultimedia>
+#include<QMediaPlayer>
 
-
+#include<QTextStream>
+#include<QFile>
+#include<QSqlRecord>
 #include<QtSql/QSqlQuery>
 #include<QVariant>
 #include <QDateTime>
@@ -107,7 +128,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
      ui->setupUi(this);
-
+son=new QSound(":son_click.mp3");
      ui->l_supp_id->setValidator(new QIntValidator(100, 9999, this));
      ui->lineEditnom->setValidator(new QRegExpValidator(QRegExp("[A-Za-z]+")));
      ui->lineEditprenom->setValidator(new QRegExpValidator(QRegExp("[A-Za-z]+")));
@@ -116,6 +137,15 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->l_date->setValidator(new QRegExpValidator(QRegExp("[0-9 /]{10}")));
      ui->lineEditcin->setValidator(new QRegExpValidator(QRegExp("[0-9 :]{8}")));
      ui->lineEdittel->setValidator(new QRegExpValidator(QRegExp("[0-9 :]{8}")));
+     ui->l_sujet->setValidator(new QRegExpValidator(QRegExp("[A-Za-z]+")));
+     ui->l_etat->setValidator(new QRegExpValidator(QRegExp("[A-Za-z]+")));
+     ui->l_id_rec->setValidator(new QRegExpValidator(QRegExp("[0-9]{8}")));
+     ui->ldater->setValidator(new QRegExpValidator(QRegExp("[0-9 /]{10}")));
+     ui->l_nbh->setValidator(new QRegExpValidator(QRegExp("[0-9]{8}")));
+     ui->l_pa->setValidator(new QRegExpValidator(QRegExp("[0-9]{8}")));
+
+
+
 
      ui->TAB_EMPLOYE->setModel(Etmp.afficher());
      ui->tab_recl->setModel(R.afficher_rec());
@@ -144,6 +174,7 @@ void MainWindow::on_pb_ajouter_clicked()
  Employe E (nom,prenom,sexe,date_de_naissance,mail,adresse,id,cin,num_de_tel);
 
 bool test=E.ajouter();
+
 if(test)
 { ui->TAB_EMPLOYE->setModel(Etmp.afficher());
     QMessageBox::information(nullptr, QObject::tr("ok"),
@@ -208,6 +239,16 @@ void MainWindow::on_TAB_EMPLOYE_clicked(const QModelIndex &index)
 {
  QString  id=ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),6)).toString();
         ui ->l_supp_id->setText(id);
+
+        ui->lineEditnom->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),1)).toString());
+        ui->lineEditcin->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),0)).toString());
+        ui->lineEditprenom->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),2)).toString());
+        ui->lineEditsexe->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),3)).toString());
+        ui->lineEditmail->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),4)).toString());
+        ui->lineEditadresse->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),5)).toString());
+        ui->lineEditid->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),6)).toString());
+        ui->l_date->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),7)).toString());
+        ui->lineEdittel->setText(ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(index.row(),8)).toString());
 
 }
 
@@ -400,3 +441,55 @@ void MainWindow::on_pb_rein_p_clicked()
     ui->l_pa->setText("");
     ui->l_nbh->setText("");
 }
+
+
+
+
+void MainWindow::on_pb_calcul_clicked()
+{
+
+    prime p;
+        ui->tab_somme->setModel(p.calcul_prime());
+
+
+}
+
+void MainWindow::on_pbnbh_supp_clicked()
+{
+    ui->tab_somme->setModel(p.calcul_nbh());
+}
+
+
+
+void MainWindow::on_pb_excel_clicked()
+{
+
+        ui->tab_excel->setModel(Etmp.afficher());
+}
+
+
+
+void MainWindow::on_pb_code_clicked()
+{
+    if(ui->TAB_EMPLOYE->currentIndex().row()==-1)
+                  QMessageBox::information(nullptr, QObject::tr("QrCode"),
+                                           QObject::tr("Veuillez Choisir un employe du Tableau.\n"
+                                                       "Click Ok to exit."), QMessageBox::Ok);
+              else
+              {
+                   int ID_E=ui->TAB_EMPLOYE->model()->data(ui->TAB_EMPLOYE->model()->index(ui->TAB_EMPLOYE->currentIndex().row(),0)).toInt();
+                   const QrCode qr = QrCode::encodeText(std::to_string(ID_E).c_str(), QrCode::Ecc::LOW);
+                   std::ofstream myfile;
+                   myfile.open ("qrcode.svg") ;
+                   myfile << qr.toSvgString(1);
+                   myfile.close();
+                   QSvgRenderer svgRenderer(QString("qrcode.svg"));
+                   QPixmap pix( QSize(150, 150) );
+                   QPainter pixPainter( &pix );
+                   svgRenderer.render( &pixPainter );
+                   ui->label_code->setPixmap(pix);
+              }
+}
+//QMediaPlayer * sound = new QMediaPlayer();
+//sound->setmedia(QUrl("qrc:/images/son_click.mp3"));
+//sound->play();

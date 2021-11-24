@@ -4,13 +4,17 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql \
+multimedia
+QT += core
 QT += printsupport
-QT += widgets
+
+QT += svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Atelier_Connexion
+QT += widgets multimedia
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -33,6 +37,7 @@ SOURCES += \
         mainwindow.cpp \
     connection.cpp \
     prime.cpp \
+    qrcode.cpp \
     reclamation.cpp
 
 HEADERS += \
@@ -41,6 +46,7 @@ HEADERS += \
         mainwindow.h \
     connection.h \
     prime.h \
+    qrcode.h \
     reclamation.h
 
 FORMS += \
@@ -51,3 +57,13 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+SUBDIRS += \
+    donutbreakdown.pro
+
+DISTFILES += \
+    donutbreakdown.pro.user \
+    son_click.mp3
+
+RESOURCES += \
+    res.qrc

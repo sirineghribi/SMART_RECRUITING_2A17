@@ -34,8 +34,8 @@ bool reclamation::ajouter_rec()
     QSqlQuery query;
     QString res=QString::number(id_r);
 
-query.prepare("INSERT INTO reclamation (id_r, date_r,sujet,etat) "
-                        "VALUES (:id_r , :date_r , :sujet , :etat)");
+query.prepare("INSERT INTO reclamation (id_r,date_r,sujet,etat) "
+                        "VALUES (:id_r,:date_r,:sujet,:etat)");
           query.bindValue(":id_r", res);
           query.bindValue("date_r", date_r);
           query.bindValue("sujet", sujet);

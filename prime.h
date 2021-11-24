@@ -3,7 +3,7 @@
 #include<QString>
 #include<QSqlQuery>
 #include<QSqlQueryModel>
-
+#include <QDebug>
 class prime
 {
 public:
@@ -19,7 +19,8 @@ public:
 
     bool ajouter_nbh_supp();
     QSqlQueryModel * afficher_nbh();
-
+QSqlQueryModel *calcul_prime();
+QSqlQueryModel *calcul_nbh();
 private:
     int nbh_supp,primes;
 
