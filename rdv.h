@@ -39,6 +39,7 @@ public:
     QSqlQueryModel* pdf();
 
     QSqlQueryModel * statistic();
+    //void choix_stat();
 
 private:
     int id_rdv, id_p, id_c;

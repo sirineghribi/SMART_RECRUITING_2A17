@@ -1,5 +1,6 @@
 QT       += core gui sql
 QT       += printsupport
+QT       += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -21,17 +22,20 @@ SOURCES += \
     gestionrdv.cpp \
     main.cpp \
     mainwindow.cpp \
-    rdv.cpp
+    rdv.cpp \
+    stat_categorie.cpp
 
 HEADERS += \
     connection.h \
     gestionrdv.h \
     mainwindow.h \
-    rdv.h
+    rdv.h \
+    stat_categorie.h
 
 FORMS += \
     gestionrdv.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    stat_categorie.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
