@@ -7,6 +7,7 @@
 #include<QTextStream>
 #include<QFile>
 #include <QVariant>
+#include <QMessageBox>
 
 Client::Client()
 {
@@ -151,7 +152,7 @@ QSqlQueryModel * Client::trier(QString ordre)
 
             return model;
      //QSqlQuery *query = new QSqlQuery ;
-     //query->prepare("SELECT* FROM client WHERE domaine LIKE'"+dom+"%'");
+     //query->prepare("SELECT* FROM client WHERE domaine LIKE 'm%');
      //return query->exec();
      /*if(query->exec())
      { return true;
@@ -211,7 +212,7 @@ void Client::PDF()
 
 
      QPrintDialog dlg(&printer, 0);
-    // if(dlg.exec() == QDialog::Accepted) {
+
       QSqlQuery query;
 
       query.prepare("SELECT * from client");
@@ -227,9 +228,7 @@ QSqlQueryModel * Client::liste_reclamation(QString val)
     QSqlQueryModel* model=new  QSqlQueryModel();
 
           model->setQuery("SELECT client.cin ,reclamation.date_reclamation,client.nom  FROM client FULL JOIN reclamation ON client.cin=reclamation.cin_client WHERE cin LIKE'"+val+"%'");
-          /*model->setHeaderData(0, Qt::Horizontal, QObject::tr("client.cin"));
-          model->setHeaderData(1, Qt::Horizontal, QObject::tr("client.nom"));
-          model->setHeaderData(2, Qt::Horizontal, QObject::tr("reclamation.date_reclamation"));*/
+
 
 
 
@@ -244,7 +243,7 @@ QSqlQueryModel * Client::liste_reclamation(QString val)
     QSqlQueryModel* model=new  QSqlQueryModel();
 
           model->setQuery("");
-          /*model->setHeaderData(0, Qt::Horizontal, QObject::tr("client.cin"));
+          model->setHeaderData(0, Qt::Horizontal, QObject::tr("client.cin"));
           model->setHeaderData(1, Qt::Horizontal, QObject::tr("client.nom"));
           model->setHeaderData(2, Qt::Horizontal, QObject::tr("reclamation.date_reclamation"));*/
 
@@ -264,15 +263,58 @@ QSqlQueryModel * Client::liste_clients(QString d1, QString d2)
 
 
           model->setQuery("SELECT client.cin ,rdv.dates,client.nom,rdv.heure  FROM client FULL JOIN rdv ON client.cin=rdv.id WHERE dates BETWEEN  '"+d1+"' AND '"+d2+"'");
-          /*model->setHeaderData(0, Qt::Horizontal, QObject::tr("client.cin"));
-          model->setHeaderData(1, Qt::Horizontal, QObject::tr("client.nom"));
-          model->setHeaderData(2, Qt::Horizontal, QObject::tr("reclamation.date_reclamation"));*/
-
-
-
-
-
-    return model;
+return model;
 
 }
+
+
+void Client::update_ard()
+{
+
+
+
+    QSqlQuery query;
+       query.prepare("select * FROM domaine WHERE NOM LIKE 'medecine' " );
+       if ((query.exec())&&(query.next()))
+                {
+                 int n=query.value(4).toInt();
+                 qDebug()<<n;
+
+       if(n<25)
+       {query.prepare("update domaine set nbr_tot=:nbr_tot where NOM='medecine' ");
+       query.bindValue(":nbr_tot",n+=1);
+       if(query.exec())
+        {QMessageBox::information(nullptr, QObject::tr("not ok"),
+                             QObject::tr("ajouter non effectue \n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);}
+       }
+                 }
+}
+
+
+void Client::update_ard_1()
+{
+
+
+
+    QSqlQuery query;
+       query.prepare("select * FROM domaine WHERE NOM LIKE 'INGENIEURIE' " );
+       if ((query.exec())&&(query.next()))
+                {
+                 int n=query.value(4).toInt();
+                 qDebug()<<n;
+
+       if(n<25)
+       {query.prepare("update domaine set nbr_tot=:nbr_tot where NOM='INGENIEURIE' ");
+       query.bindValue(":nbr_tot",n+=1);
+       if(query.exec())
+        {QMessageBox::information(nullptr, QObject::tr("not ok"),
+                             QObject::tr("ajouter non effectue \n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);}
+       }
+                 }
+}
+
+
+
 

@@ -53,6 +53,8 @@ public:
     void PrintTable( QPrinter* printer, QSqlQuery&  Query );
     QSqlQueryModel * liste_reclamation (QString );
     QSqlQueryModel * liste_clients (QString,QString  );
+  void  update_ard ();
+  void  update_ard_1 ();
    // bool liste_reclamation();
    // bool rechercher (QString);
      //QSqlQueryModel * somme_client();

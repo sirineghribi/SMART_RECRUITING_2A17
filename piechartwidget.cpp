@@ -61,11 +61,7 @@ void PieChartWidget::paintEvent(QPaintEvent *)
                                           "femme");
                   painter.setBrush(Qt::darkBlue);
                   painter.drawRect(QRect(835, 40, 40, 40));
-                  /* double draw_x =this-> width() / 2 +
-                                   cos(PI* (endAng / 180.0 - angle / 360.0)) * this->width() / 4.0;
-                   double draw_y = this->height() / 2 +
-                                   sin(PI * (endAng / 180.0 - angle / 360.0)) * this->width() / 4.0;
-                  */
+
 
 
        }

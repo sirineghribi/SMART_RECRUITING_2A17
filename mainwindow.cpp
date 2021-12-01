@@ -16,6 +16,16 @@ MainWindow::MainWindow(QWidget *parent)
  ui->tab_client->setModel(C.afficher());
  //ui->tab_client->setModel(C.rechercher(ui->domaine2->text()));
 
+ int ret=A.connect_arduino(); // lancer la connexion à arduino
+     switch(ret){
+     case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+         break;
+     case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+        break;
+     case(-1):qDebug() << "arduino is not available";
+     }
+      QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+      //le slot update_label suite à la reception du signal readyRead (reception des données).
 }
 
 MainWindow::~MainWindow()
@@ -141,4 +151,33 @@ void MainWindow::on_ok_clicked()
 void MainWindow::on_ok2_clicked()
 {
     ui->tableView2->setModel(C.liste_clients(ui->d1->text(),ui->d2->text()));
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+   ui->tab_client->setModel(C.afficher());
+}
+
+/*void MainWindow::on_pushButton_clicked()
+{
+   A.write_to_arduino("1");
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+   A.write_to_arduino("2");
+}*/
+
+
+
+
+
+void MainWindow::on_bibi_clicked()
+{
+    C.update_ard();
+}
+
+void MainWindow::on_ING_clicked()
+{
+    C.update_ard_1();
 }
