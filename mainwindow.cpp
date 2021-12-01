@@ -114,5 +114,10 @@ void MainWindow::on_pushButton_clicked()
 {
 
    ui->tableView->setModel(D.list_clients(ui->lineEdit->text()));
-   ui->tableView_2->setModel(D.list_partenaires(ui->lineEdit->text()));
+
+}
+
+void MainWindow::on_partner_button_clicked()
+{
+    ui->tableView_2->setModel(D.list_partenaires(ui->lineEdit_2->text()));
 }

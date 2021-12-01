@@ -166,8 +166,15 @@ QSqlQueryModel *Domaine::list_clients(QString val)
 QSqlQueryModel *Domaine::list_partenaires(QString val)
 {
    QSqlQueryModel * model=new QSqlQueryModel();
-   model->setQuery("SELECT  GS_PARTENIARE.ID,GS_DOMAINE.ref,GS_DOMAINE.nom FROM GS_DOMAINE FULL JOIN GS_PARTENAIRE ON GS_PARTENAIRE.id=GS_DOMAINE.id WHERE GS_DOMAINE.nom LIKE '"+val+"'");
-   return model;
+   int v=val.toInt();
+   QSqlQuery q;
+    q.prepare("SELECT  GS_PARTENAIRE.id,GS_DOMAINE.ref,GS_DOMAINE.nom FROM GS_DOMAINE FULL JOIN GS_PARTENAIRE ON GS_PARTENAIRE.id=GS_DOMAINE.id WHERE GS_DOMAINE.id = :val");
+    q.bindValue(":val",v);
+    q.exec();
+    model->setQuery(q);
+    return model;
 }
+
+
 
 

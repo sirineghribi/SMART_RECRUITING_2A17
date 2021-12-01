@@ -28,6 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    arduino.cpp \
     domaine.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
     piechartwidget.cpp
 
 HEADERS += \
+    arduino.h \
     domaine.h \
         mainwindow.h \
     connection.h \
