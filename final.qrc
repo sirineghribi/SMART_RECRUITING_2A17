@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ab"/>
+    <qresource prefix="/new/prefix1">
+        <file>fondapp.jpg</file>
+    </qresource>
+</RCC>
